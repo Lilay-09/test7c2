@@ -3,6 +3,10 @@ import { postData } from "../utils/fetchData";
 import { useEffect } from "react";
 
 const Test = (props) => {
+  useEffect(() => {
+    const myVariable = process.env.API_BASE_1;
+    console.log(myVariable);
+  }, []);
   return <div>Test</div>;
 };
 

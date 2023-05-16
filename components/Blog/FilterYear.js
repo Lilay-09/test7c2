@@ -8,10 +8,6 @@ import { useRouter } from "next/router";
 const FilterYear = () => {
   const router = useRouter();
   const [getYear, setYear] = useState();
-  const handleGetYear = (e) => {
-    let year = e.target.innerText;
-    router.push(`${year}`);
-  };
 
   return (
     <div style={{ marginTop: "5vw" }}>

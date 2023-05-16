@@ -16,7 +16,6 @@ import FilterYear from "../../../components/Blog/FilterYear";
 const Blog_blogContainer = (props) => {
   const { data, dataYear } = props;
 
-  console.log(dataYear);
   const router = useRouter();
   const { query, pathname } = router;
   let q = query.page;

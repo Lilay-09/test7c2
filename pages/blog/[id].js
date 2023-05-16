@@ -88,7 +88,7 @@ export const getServerSideProps = async (ctx) => {
   const { params } = ctx;
   const { id } = params;
   const res = await postData("blogs-page");
-  const res_details = await postData("blog/obj_details", { id: id });
+  const res_details = await postData("blogs-page-details", { id: id });
   const api_service = await res;
   return {
     props: {

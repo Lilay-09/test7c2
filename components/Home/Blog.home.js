@@ -31,6 +31,7 @@ const Blog = ({ data }) => {
                 <Link
                   className={styles.blog__card__btn}
                   href={`/blog/${item.id}`}
+                  passHref
                 >
                   Read More
                   <FontAwesomeIcon icon={faArrowRight} />

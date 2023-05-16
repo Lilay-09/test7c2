@@ -41,7 +41,6 @@ export const HeaderSection = ({ title }) => {
 
   const [data, setData] = useState([]);
   const [getMedia, setMedia] = useState([]);
-
   const handleOpenMenu = () => {
     setOpenMenu(!openMenu);
   };
@@ -51,27 +50,27 @@ export const HeaderSection = ({ title }) => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `https://admin.7c-kh.com/api/our-services/limit`,
-        {
-          method: "POST",
-        }
-      );
-
-      const media = await fetch(
-        `https://admin.7c-kh.com/api/social-media/list`,
-        {
-          method: "POST",
-        }
-      );
-      const social_media = await media.json();
-      setMedia(social_media.data);
-      const jsonData = await response.json();
-      setData(jsonData.data);
-    };
-    fetchData();
+    axios
+      .post(`https://admin.7c-kh.com/api/our-services/limit`)
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
+
+  useEffect(() => {
+    axios
+      .post(`https://admin.7c-kh.com/api/social-media/list`)
+      .then((res) => {
+        setMedia(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   useEffect(() => {
     const handler = (e) => {
       if (
@@ -157,13 +156,7 @@ export const HeaderSection = ({ title }) => {
                 router.push("/");
               }}
             >
-              <Image
-                src="/images/logo.jpg"
-                width={3000}
-                height={3000}
-                alt="logo"
-                priority
-              />
+              <ImageComp imageUrl="/images/logo.jpg" />
             </div>
           </div>
           <div className={styles.nav__bar_mid_lnk}>

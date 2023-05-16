@@ -14,21 +14,19 @@ import {
 import { useState } from "react";
 import { useEffect } from "react";
 import ImageComp from "../components/ImageComp";
+import axios from "axios";
 
 const Footer = () => {
   const [getMedia, setMedia] = useState([]);
   useEffect(() => {
-    const fetchData = async () => {
-      const media = await fetch(
-        `https://admin.7c-kh.com/api/social-media/list`,
-        {
-          method: "POST",
-        }
-      );
-      const social_media = await media.json();
-      setMedia(social_media.data);
-    };
-    fetchData();
+    axios
+      .post(`http://localhost:8000/api/social-media/list`)
+      .then((res) => {
+        setMedia(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
