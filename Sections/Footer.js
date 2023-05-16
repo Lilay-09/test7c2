@@ -20,7 +20,7 @@ const Footer = () => {
   const [getMedia, setMedia] = useState([]);
   useEffect(() => {
     axios
-      .post(`http://localhost:8000/api/social-media/list`)
+      .post(`https://admin.7c-kh.com/api/social-media/list`)
       .then((res) => {
         setMedia(res.data.data);
       })
