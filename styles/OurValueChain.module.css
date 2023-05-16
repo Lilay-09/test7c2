@@ -1,0 +1,26 @@
+.ourvalue_container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.ourvalue_img {
+  flex: 0 0 30vw;
+  min-width: 250px;
+  height: 18vw;
+  min-height: 200px;
+  /* background-color: aqua; */
+}
+.ourvalue_img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+.ourvalue_text {
+  flex: 0 0 30vw;
+  min-width: 250px;
+}
+.ourvalue_text h4 {
+  text-align: center;
+}

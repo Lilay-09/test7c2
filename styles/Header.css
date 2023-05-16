@@ -1,0 +1,38 @@
+.menubar {
+  display: none;
+}
+
+.menu__bar {
+  width: 0;
+  height: 0;
+  transition: all 0.3s;
+}
+.menu__bar__body_left {
+  display: none;
+}
+.responsive__lnk {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+@media screen and (max-width: 768px) {
+  .menubar {
+    display: block;
+  }
+  .menu__bar.active {
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px 2px #00000041;
+    width: 95%;
+    height: 300px;
+    position: relative;
+    padding: 2rem;
+    margin: 1rem auto;
+    /* background-color: aqua; */
+  }
+  .menu__bar.active .menu__bar__body_left {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    gap: 1vw;
+  }
+}
