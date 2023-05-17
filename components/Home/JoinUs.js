@@ -3,18 +3,14 @@ import TitleComponent from "../TitleComponent";
 import styles from "../../styles/Home.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
-const JoinUs = () => {
+import { postData } from "../../utils/fetchData";
+import ImageComp from "../ImageComp";
+const JoinUs = (props) => {
   const router = useRouter();
   return (
     <div className={styles.join__us__container}>
       <div className={styles.join__background}>
-        <Image
-          src="/images/g1.png"
-          width={600}
-          height={600}
-          alt="asd"
-          priority
-        />
+        <ImageComp imageUrl={props.banner} />
       </div>
       <div
         style={{

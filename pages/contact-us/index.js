@@ -10,14 +10,13 @@ import Title from "../../components/Title";
 import { useRouter } from "next/router";
 import { ToCap } from "../../utils/ToCapitalize";
 import Image from "next/image";
-const ContactUs = () => {
+import { postData } from "../../utils/fetchData";
+const ContactUs = (props) => {
   const router = useRouter();
-
+  const { banner, contact_us } = props;
   return (
     <Layout join_us title={router.pathname}>
-      <BannerLink
-        img={"https://admin.7c-kh.com/uploads/public/1_data/about_us/images/"}
-      >
+      <BannerLink img={banner.image_url}>
         <Link href="/">Home</Link>
         <FontAwesomeIcon icon={faAngleRight} />
         <Link href="/contact-us">{ToCap(router.pathname)}</Link>
@@ -41,7 +40,7 @@ const ContactUs = () => {
           </div>
           <div className={styles.contact_text}>
             <span>Address</span>
-            <p>A108 Adam Street, Phnom Peng, NY 535022</p>
+            <p>{contact_us.address}</p>
           </div>
         </div>
         <div className={styles.contact__thing}>
@@ -56,7 +55,7 @@ const ContactUs = () => {
           </div>
           <div className={styles.contact_text}>
             <span>Email Us</span>
-            <p>contact@example.com</p>
+            <p>{contact_us.email}</p>
           </div>
         </div>
         <div className={styles.contact__thing}>
@@ -71,7 +70,7 @@ const ContactUs = () => {
           </div>
           <div className={styles.contact_text}>
             <span>Call Us</span>
-            <p>108 535022</p>
+            <p>{contact_us.phone_number}</p>
           </div>
         </div>
         <div className={styles.contact__thing}>
@@ -86,7 +85,7 @@ const ContactUs = () => {
           </div>
           <div className={styles.contact_text}>
             <span>Opening Hours</span>
-            <p>Mon-Sat: 11Am - 23PM; Sunday:Closed</p>
+            <p>{contact_us.open_hours}</p>
           </div>
         </div>
       </div>
@@ -116,3 +115,15 @@ const ContactUs = () => {
 };
 
 export default ContactUs;
+export const getServerSideProps = async () => {
+  const res = await postData(`contact-us-banner/get`);
+  const res1 = await postData(`contact-us/list`);
+  const apiservice = await res;
+  const contact = await res1;
+  return {
+    props: {
+      banner: apiservice.data,
+      contact_us: contact.data,
+    },
+  };
+};

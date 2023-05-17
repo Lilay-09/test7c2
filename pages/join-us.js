@@ -15,6 +15,7 @@ import { postData } from "../utils/fetchData";
 const JoinUs = (props) => {
   const router = useRouter();
   const { joinUsApi } = props;
+
   return (
     <Layout join_us title={router.pathname}>
       <BannerLink img={joinUsApi.banner.image_url}>
@@ -44,11 +45,12 @@ const JoinUs = (props) => {
 
 export default JoinUs;
 export const getServerSideProps = async () => {
-  const res = await postData(`join-us-page`);
-  const apiservice = await res;
+  const res1 = await postData("join-us-page");
+  const api_service = await res1;
+
   return {
     props: {
-      joinUsApi: apiservice.data,
+      joinUsApi: api_service.data,
     },
   };
 };
