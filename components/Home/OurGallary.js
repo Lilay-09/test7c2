@@ -24,14 +24,13 @@ const OurGallary = ({ data }) => {
           <ImageComp imageUrl={data.image_url} />
         </div>
         <div className={styles.our__gallary__right__container}>
-          {data > 0 &&
-            data.sub_lists.map((item, i) => {
-              return (
-                <div className={styles.our__gallary__right__img} key={item.id}>
-                  <ImageComp imageUrl={item.image_url} />
-                </div>
-              );
-            })}
+          {data.sub_lists.map((item, i) => {
+            return (
+              <div className={styles.our__gallary__right__img} key={item.id}>
+                <ImageComp imageUrl={item.image_url} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
