@@ -26,7 +26,7 @@ const OurServices = ({ data }) => {
                 href={`/our-service/${item.id}`}
                 passHref
               >
-                <ImageComp imageUrl={item.image_url} />
+                <ImageComp imageUrl={item.image_url} defaultImg={"/images"} />
               </Link>
               <div className={styles.services__content__text}>
                 <h5>{item.title}</h5>

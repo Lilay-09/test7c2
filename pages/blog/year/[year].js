@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PaginationBtn from "../../../components/PaginationBtn";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import ImageComp from "../../../components/ImageComp";
 import Title from "../../../components/Title";
@@ -12,9 +12,10 @@ import styles from "../../../styles/Blog.module.css";
 import Layout from "../../../Sections/Layout";
 import SplitContainer from "../../../components/SplitContainer";
 import FilterYear from "../../../components/Blog/FilterYear";
+import ListCard from "../../../components/ListCard";
 
 const Blog_blogContainer = (props) => {
-  const { data, dataYear } = props;
+  const { data, dataYear, filterYear } = props;
 
   const router = useRouter();
   const { query, pathname } = router;
@@ -148,7 +149,7 @@ const Blog_blogContainer = (props) => {
             </div>
           </div>
         }
-        right={<FilterYear />}
+        right={<FilterYear data={filterYear} />}
       />
     </Layout>
   );
@@ -163,10 +164,14 @@ export const getServerSideProps = async (ctx) => {
     year: year,
   });
   const api_service = await res;
+
+  const res1 = await postData("blogs-page");
+  const filter_year = await res1;
   return {
     props: {
       data: api_service.data,
       dataYear: year,
+      filterYear: filter_year.data,
     },
   };
 };

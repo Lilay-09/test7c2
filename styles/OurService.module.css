@@ -36,13 +36,13 @@
 @media screen and (max-width: 768px) {
   .service__split_container {
     flex-direction: column-reverse;
-    align-items: center;
+    /* align-items: center; */
   }
   .service_left_container {
     width: 100%;
   }
   .service_right_container {
     width: 100%;
-    align-items: center;
+    /* align-items: center; */
   }
 }

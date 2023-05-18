@@ -47,8 +47,8 @@ const HomeScreen = (props) => {
               <div className={styles.play_button}>
                 <Image
                   src="/images/polygon.png"
-                  width={3000}
-                  height={3000}
+                  width={300}
+                  height={300}
                   alt="play_btn"
                   priority
                 />
@@ -73,8 +73,8 @@ const HomeScreen = (props) => {
               width="100%"
               height="100%"
               src={banner.video}
-              // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             ></iframe>
           </div>
         )}
@@ -84,12 +84,7 @@ const HomeScreen = (props) => {
           return (
             <div className={styles.value_chain__card} key={item.id}>
               <div className={styles.value_chain__card_logo}>
-                <Image
-                  src={`${item.image_url}`}
-                  alt="raw_material"
-                  width={1000}
-                  height={1000}
-                />
+                <ImageComp imageUrl={item.image_url} />
               </div>
               <div className={styles.value_chain__card_text}>
                 <span>{item.title}</span>

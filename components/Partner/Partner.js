@@ -12,17 +12,13 @@ const Partner__comp = ({ data }) => {
         </Title>
       </div>
       <div className={styles.partner__container_text}>
-        <p>
-          Becoming a partnership, it provides mutual benefit, helps create more
-          market and provide mutual benefit, standing win win solution through
-          friendly conversation.
-        </p>
+        <p>{data.description}</p>
       </div>
       <div className={styles.partner__logo_container}>
-        {data.map((item, i) => {
+        {data.sub_list.map((item, i) => {
           return (
             <div className={styles.partner__logo_} key={item.id}>
-              <ImageComp imageUrl={item.image} />
+              <ImageComp imageUrl={item.image_url} />
             </div>
           );
         })}

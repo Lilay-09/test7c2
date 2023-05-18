@@ -46,7 +46,7 @@ const BlogDetails = (props) => {
         }
         right={
           <div className={styles.blog_dt__right}>
-            <FilterYear />
+            <FilterYear data={blogs_api} />
             <ListCard title={"Related Post"}>
               {blogs_api.blogs.sub_list.slice(0, 3).map((item, i) => {
                 return (
@@ -56,13 +56,7 @@ const BlogDetails = (props) => {
                       href={`${item.id}`}
                       passHref
                     >
-                      <Image
-                        src={item.image_url}
-                        alt={item.title}
-                        width={3000}
-                        height={3000}
-                        priority
-                      />
+                      <ImageComp imageUrl={item.image_url} />
                     </Link>
                     <div className={styles.related__post_content}>
                       <span>{item.title}</span>

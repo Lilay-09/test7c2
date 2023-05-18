@@ -21,7 +21,7 @@ const OurService = (props) => {
   const router = useRouter();
   // const route = router.asPath.replace(router.asPath.slice(0, 13), "");
   return (
-    <Layout title={router.pathname}>
+    <Layout>
       <BannerLink img={services_lst.banner.image_url}>
         <Link href="/">Home</Link>
         <FontAwesomeIcon icon={faAngleRight} />

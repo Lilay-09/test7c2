@@ -5,14 +5,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 
-const FilterYear = () => {
+const FilterYear = ({ data }) => {
   const router = useRouter();
-  const [getYear, setYear] = useState();
 
   return (
     <div style={{ marginTop: "5vw" }}>
       <ListCard title={"Filter News By Year"}>
-        <a href={"/blog/year/2022"}>
+        {data.filter_year.year.map((item, i) => {
+          return (
+            <a href={`/blog/year/${Number(item)}`} key={i} className="nav-link">
+              <FontAwesomeIcon icon={faCaretRight} />
+              <span>{item}</span>
+            </a>
+          );
+        })}
+        {/* <a href={"/blog/year/2022"}>
           <FontAwesomeIcon icon={faCaretRight} />
           <span>2022</span>
         </a>
@@ -23,7 +30,7 @@ const FilterYear = () => {
         <a href={"/blog/year/2024"}>
           <FontAwesomeIcon icon={faCaretRight} />
           <span>2024</span>
-        </a>
+        </a> */}
       </ListCard>
     </div>
   );

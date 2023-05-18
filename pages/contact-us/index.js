@@ -25,7 +25,7 @@ const ContactUs = (props) => {
         <div style={{ marginBottom: "3vw" }}>
           <Title cap>Contact us</Title>
         </div>
-        <Google_map />
+        <Google_map src={contact_us.map_url} />
       </div>
       <div className={styles.contact__via_any}>
         <div className={styles.contact__thing}>

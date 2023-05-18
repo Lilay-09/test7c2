@@ -24,7 +24,7 @@ const Blog = (props) => {
       </BannerLink>
       <SplitContainer
         left={<Blog_blogContainer data={blogs_api.blogs} />}
-        right={<FilterYear />}
+        right={<FilterYear data={blogs_api} />}
       />
     </Layout>
   );

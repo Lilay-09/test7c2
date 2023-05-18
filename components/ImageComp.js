@@ -4,9 +4,11 @@ import { useState } from "react";
 
 const ImageComp = ({ imageUrl, defaultImg }) => {
   const [imageError, setImageError] = useState(false);
-
-  const handleImageError = () => {
+  let img = "/images/banner2.png";
+  const handleImageError = (e) => {
     setImageError(true);
+    e.target.onerror = null;
+    e.target.src = img;
   };
   return (
     <React.Fragment>
@@ -20,7 +22,14 @@ const ImageComp = ({ imageUrl, defaultImg }) => {
           priority
         />
       ) : (
-        <p>Image not found</p>
+        <Image
+          src={defaultImg ? defaultImg : `/images/banner2.png`}
+          onError={handleImageError}
+          alt="Image"
+          width={3000}
+          height={2000}
+          priority
+        />
       )}
     </React.Fragment>
     // <Image
