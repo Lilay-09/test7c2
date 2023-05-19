@@ -15,6 +15,7 @@ const Blog_blogContainer = ({ data }) => {
   const router = useRouter();
   const { query, pathname } = router;
   let q = query.page;
+
   const [data_item, setData] = useState(data.sub_list);
   const [currentPage, setCurrentPage] = useState(Number(q) ? Number(q) : 1);
   const [itemsPerPgae, setItemPerPgae] = useState(4);
@@ -79,6 +80,7 @@ const Blog_blogContainer = ({ data }) => {
     setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
     setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
   }
+  if (data.sub_list.length <= 0) return <div>Page Under Development</div>;
   return (
     <div
       className={serviceStyles.service_left_container}

@@ -93,7 +93,7 @@ const HomeScreen = (props) => {
           );
         })}
       </div>
-      {/* <Home_aboutus data={homeapi.about_us} /> */}
+      <Home_aboutus data={homeapi.about_us} />
       <div className={styles.why_choosing_us}>
         <div className={styles.why_choosing_us__big__card}>
           <div className={styles.why_choosing_us__big__card_title}>

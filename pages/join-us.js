@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { ToCap } from "../utils/ToCapitalize";
 import { postData } from "../utils/fetchData";
+import ImageComp from "../components/ImageComp";
 
 const JoinUs = (props) => {
   const router = useRouter();
@@ -29,13 +30,7 @@ const JoinUs = (props) => {
         opposite
         right={
           <div className={styles.membership__benifits_img}>
-            <Image
-              src={joinUsApi.join_us.image_url}
-              width={3000}
-              height={3000}
-              alt="client"
-              priority
-            />
+            <ImageComp imageUrl={joinUsApi.join_us.image_url} />
           </div>
         }
       />

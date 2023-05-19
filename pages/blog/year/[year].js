@@ -119,7 +119,7 @@ const Blog_blogContainer = (props) => {
                   <div key={i}>
                     <div className={styles.blog_card_content} key={item.id}>
                       <div className={styles.blog_card__img}>
-                        <ImageComp imageUrl={"/images/farm1.png"} />
+                        <ImageComp imageUrl={item.image_url} />
                       </div>
                       <div className={styles.blog_card__text}>
                         <span>{item.date}</span>

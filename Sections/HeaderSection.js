@@ -41,6 +41,7 @@ export const HeaderSection = ({ title }) => {
 
   const [data, setData] = useState([]);
   const [getMedia, setMedia] = useState([]);
+  const [contact, setContact] = useState([]);
   const handleOpenMenu = () => {
     setOpenMenu(!openMenu);
   };
@@ -65,6 +66,14 @@ export const HeaderSection = ({ title }) => {
       .post(`https://admin.7c-kh.com/api/social-media/list`)
       .then((res) => {
         setMedia(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .post(`https://admin.7c-kh.com/api/contact-us/list`)
+      .then((res) => {
+        setContact(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -100,12 +109,12 @@ export const HeaderSection = ({ title }) => {
           <div className={styles.top_nav__left}>
             <div className={styles.lef__nav_phone}>
               <FontAwesomeIcon icon={faMobileAndroidAlt} />
-              +855 554 885
+              {contact.phone_number}
             </div>
-            <div className={styles.lef__nav_mail}>
+            {/* <div className={styles.lef__nav_mail}>
               <FontAwesomeIcon icon={faEnvelope} />
               Web Mail
-            </div>
+            </div> */}
           </div>
           <div className={styles.top_nav__right}>
             <div className={styles.top_nav__lnk}>
@@ -122,18 +131,6 @@ export const HeaderSection = ({ title }) => {
                   </Link>
                 );
               })}
-              {/* <div className={styles.top_nav_lnk_circle_avatar}>
-                <FontAwesomeIcon icon={faTwitter} />
-              </div>
-              <div className={styles.top_nav_lnk_circle_avatar}>
-                <FontAwesomeIcon icon={faFacebook} />
-              </div>
-              <div className={styles.top_nav_lnk_circle_avatar}>
-                <FontAwesomeIcon icon={faInstagram} />
-              </div>
-              <div className={styles.top_nav_lnk_circle_avatar}>
-                <FontAwesomeIcon icon={faLinkedin} />
-              </div> */}
             </div>
             <div className={styles.nav__bar_contact_us}>
               <button
@@ -187,7 +184,6 @@ export const HeaderSection = ({ title }) => {
           <ActiveLink href="/join-us">Join Us</ActiveLink>
           <ActiveLink href="/contact-us">Contact Us</ActiveLink>
         </div>
-        <div></div>
       </div>
     </>
   );

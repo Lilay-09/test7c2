@@ -18,11 +18,30 @@ import axios from "axios";
 
 const Footer = () => {
   const [getMedia, setMedia] = useState([]);
+  const [foot, setFoot] = useState([]);
+  const [contact, setContact] = useState([]);
   useEffect(() => {
     axios
       .post(`https://admin.7c-kh.com/api/social-media/list`)
       .then((res) => {
         setMedia(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .post(`https://admin.7c-kh.com/api/company-profile/list`)
+      .then((res) => {
+        setFoot(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
+      .post(`https://admin.7c-kh.com/api/contact-us/list`)
+      .then((res) => {
+        setContact(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -49,11 +68,11 @@ const Footer = () => {
           </span>
 
           <div>
-            <p>Phone: +1 5589 55488 55</p>
-            <p>Email: info@example.com</p>
+            <p>Phone: {foot.phone_number}</p>
+            <p>Email: {foot.email}</p>
           </div>
           <div>
-            <p>©Copyright 2023 SevenC, All Rights Reserved</p>
+            <p>©Copyright 2023 7c, All Rights Reserved</p>
           </div>
         </div>
       </div>
@@ -124,7 +143,7 @@ const Footer = () => {
           <h3>Contact Info</h3>
         </div>
         <div className={styles.useful__lnk__mnu_}>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra videa</p>
+          <p>{contact.address}</p>
           <div className={headStyles.top_nav__lnk}>
             {getMedia.map((item, i) => {
               return (

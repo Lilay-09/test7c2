@@ -42,11 +42,11 @@ const OurService = (props) => {
               <iframe
                 width="100%"
                 height="100%"
-                src={ourServices.video}
+                src={ourServices.video_url}
               ></iframe>
             </div>
             <div>
-              <p>{ourServices.photo_text}</p>
+              <p>{ourServices.description}</p>
             </div>
             <div className={styles.feed_video}>
               <ImageComp imageUrl={ourServices.image_url} />

@@ -39,8 +39,8 @@ const JoinUs = (props) => {
       </div>
       <div className={styles.join__us_text}>
         <p>
-          {data.description
-            ? data.description
+          {data.title
+            ? data.title
             : `Becoming a partnership, it provides mutual benefit, helps create more
           market.`}
         </p>

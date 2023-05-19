@@ -15,6 +15,7 @@ import { postData } from "../utils/fetchData";
 import styles from "../styles/AboutUs.module.css";
 import Image from "next/image";
 import Title from "../components/Title";
+import ImageComp from "../components/ImageComp";
 
 const AboutUs = (props) => {
   const router = useRouter();
@@ -40,15 +41,9 @@ const AboutUs = (props) => {
             return (
               <div className={styles._core_values__item} key={item.id}>
                 <div className={styles.__core_val_img}>
-                  <Image
-                    src={"/images/m1.jpg"}
-                    alt={"about_core_values"}
-                    width={30}
-                    height={30}
-                    priority
-                  />
+                  <ImageComp imageUrl={item.image_url} />
                 </div>
-                <div>{item.description}</div>
+                <div>{item.title}</div>
               </div>
             );
           })}
