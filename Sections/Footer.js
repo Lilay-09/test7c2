@@ -52,13 +52,7 @@ const Footer = () => {
     <footer className={styles.footer_container}>
       <div className={styles.about__company}>
         <div className={styles.footer__logo}>
-          <Image
-            src="/images/logo.jpg"
-            width={300}
-            height={300}
-            alt="logo"
-            priority
-          />
+          <ImageComp imageUrl={foot.image_url} />
         </div>
         <div className={styles.footer__details}>
           <span>

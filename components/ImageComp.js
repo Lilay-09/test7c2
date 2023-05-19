@@ -14,7 +14,7 @@ const ImageComp = ({ imageUrl, defaultImg }) => {
     <React.Fragment>
       {!imageError ? (
         <Image
-          src={imageUrl ? imageUrl : "/images/banner2.png"}
+          src={imageUrl ? imageUrl : "/images/white.jpg"}
           onError={handleImageError}
           alt="Image"
           width={3000}
@@ -23,7 +23,7 @@ const ImageComp = ({ imageUrl, defaultImg }) => {
         />
       ) : (
         <Image
-          src={defaultImg ? defaultImg : `/images/banner2.png`}
+          src={defaultImg ? defaultImg : `/images/white.jpg`}
           onError={handleImageError}
           alt="Image"
           width={3000}
@@ -32,16 +32,6 @@ const ImageComp = ({ imageUrl, defaultImg }) => {
         />
       )}
     </React.Fragment>
-    // <Image
-    //   src={
-    //     imageUrl ? imageUrl : defaultImg ? defaultImg : "/images/banner2.png"
-    //   }
-    //   alt="Image"
-    //   onError={handleImageError}
-    //   width={3000}
-    //   height={300}
-    //   priority
-    // />
   );
 };
 export default ImageComp;

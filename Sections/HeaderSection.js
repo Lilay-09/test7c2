@@ -42,6 +42,7 @@ export const HeaderSection = ({ title }) => {
   const [data, setData] = useState([]);
   const [getMedia, setMedia] = useState([]);
   const [contact, setContact] = useState([]);
+  const [com, setCom] = useState([]);
   const handleOpenMenu = () => {
     setOpenMenu(!openMenu);
   };
@@ -78,6 +79,14 @@ export const HeaderSection = ({ title }) => {
       .catch((err) => {
         console.log(err);
       });
+    axios
+      .post(`https://admin.7c-kh.com/api/company-profile/list`)
+      .then((res) => {
+        setCom(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   useEffect(() => {
@@ -103,7 +112,10 @@ export const HeaderSection = ({ title }) => {
         <Head>
           <title>{title}</title>
           {/* add logo */}
-          <link rel="icon" href="/images/logo.jpg" />
+          <link
+            rel="icon"
+            href={com.image_url ? com.image_url : "/images/banner2.png"}
+          />
         </Head>
         <div className={styles.top_nav__}>
           <div className={styles.top_nav__left}>
@@ -153,7 +165,8 @@ export const HeaderSection = ({ title }) => {
                 router.push("/");
               }}
             >
-              <ImageComp imageUrl="/images/logo.jpg" />
+              <ImageComp imageUrl={com.image_url} />
+              {/* <ImageComp imageUrl="/images/logo.jpg" /> */}
             </div>
           </div>
           <div className={styles.nav__bar_mid_lnk}>

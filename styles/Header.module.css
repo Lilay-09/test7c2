@@ -55,7 +55,11 @@
 .top_nav__lnk {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.8rem;
+}
+.top_nav__lnk img {
+  border-radius: 50%;
 }
 .nav__bar {
   display: flex;

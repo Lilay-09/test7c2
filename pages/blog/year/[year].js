@@ -16,6 +16,8 @@ import ListCard from "../../../components/ListCard";
 
 const Blog_blogContainer = (props) => {
   const { data, dataYear, filterYear } = props;
+  console.log(data);
+  console.log(filterYear);
 
   const router = useRouter();
   const { query, pathname } = router;
@@ -111,7 +113,7 @@ const Blog_blogContainer = (props) => {
               Blog
             </Title>
             <div>
-              <p>{data.description}</p>
+              <p>{filterYear.blogs.description}</p>
             </div>
             <div className={styles.blog_card_container}>
               {currentItems.map((item, i) => {
