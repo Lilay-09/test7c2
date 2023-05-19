@@ -84,11 +84,11 @@
 }
 .about__mission_lnk_text {
   display: flex;
-  align-items: center;
   gap: 1em;
   color: #643617;
   font-size: 16px;
   font-weight: 500;
+  line-break: anywhere;
 }
 .lnk_icon {
   color: rgba(128, 128, 128, 0.685);
@@ -127,6 +127,8 @@
   flex-direction: column;
   justify-content: center;
   min-width: 300px;
+  background-color: #ef7832;
+  line-break: anywhere;
 }
 .management__conten_img img {
   width: 100%;
