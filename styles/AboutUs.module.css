@@ -127,7 +127,7 @@
   flex-direction: column;
   justify-content: center;
   min-width: 300px;
-  background-color: #ef7832;
+  /* background-color: #ef7832; */
   line-break: anywhere;
 }
 .management__conten_img img {
