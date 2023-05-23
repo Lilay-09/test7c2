@@ -31,7 +31,7 @@ const OurService = (props) => {
       </BannerLink>
       <SplitContainer
         left={
-          <>
+          <div className={styles.services__container}>
             <Title cap fs>
               {ourServices.title}
             </Title>
@@ -39,11 +39,15 @@ const OurService = (props) => {
               <p>{ourServices.video_text}</p>
             </div>
             <div className={styles.feed_video}>
-              <iframe
-                width="100%"
-                height="100%"
-                src={ourServices.video_url}
-              ></iframe>
+              {ourServices.video_url !== null && (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`${ourServices.video_url}`}
+                  allowFullScreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
+              )}
             </div>
             <div>
               <p>{ourServices.description}</p>
@@ -51,7 +55,7 @@ const OurService = (props) => {
             <div className={styles.feed_video}>
               <ImageComp imageUrl={ourServices.image_url} />
             </div>
-          </>
+          </div>
         }
         right={
           <>
@@ -82,7 +86,7 @@ export default OurService;
 export const getServerSideProps = async (context) => {
   const { params } = context;
   const { id } = params;
-  const res = await postData(`our-services/details`, { id: id });
+  const res = await postData(`our-services/front/details`, { id: id });
   const res_banner = await postData("our-services-page");
   const apiservice = await res;
   return {

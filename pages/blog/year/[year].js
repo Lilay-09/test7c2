@@ -16,8 +16,6 @@ import ListCard from "../../../components/ListCard";
 
 const Blog_blogContainer = (props) => {
   const { data, dataYear, filterYear } = props;
-  console.log(data);
-  console.log(filterYear);
 
   const router = useRouter();
   const { query, pathname } = router;
@@ -60,6 +58,7 @@ const Blog_blogContainer = (props) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPgae;
   const currentItems = data_item.slice(indexOfFirstItem, indexOfLastItem);
 
+  // console.log(currentItems);
   const handleLoadMore = () => {
     setitemsPerPage(itemsPerPage + 5);
   };
@@ -151,7 +150,7 @@ const Blog_blogContainer = (props) => {
             </div>
           </div>
         }
-        right={<FilterYear data={filterYear} />}
+        right={<FilterYear data={filterYear} curYear={dataYear} />}
       />
     </Layout>
   );

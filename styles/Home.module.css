@@ -321,18 +321,20 @@
   width: 23vw;
   min-width: 300px;
   margin: 1vw 0;
+  height: 30vw;
+  min-height: 470px;
   box-shadow: 0px 0px 5px 0px #ef7832;
 }
 
 .services__content__img {
   height: 12vw;
-  min-height: 160px;
   width: 100%;
 }
 .services__content__img img {
   width: 100%;
   height: 100%;
   min-height: 160px;
+  max-height: 220px;
 }
 .services__content__text {
   display: flex;
@@ -557,6 +559,18 @@
   align-items: center;
   justify-content: center;
 }
+
+.sponser_banner {
+  width: 100%;
+  background-color: #eeeeee;
+  height: 20vw;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2vw;
+  min-height: 200px;
+}
 @media screen and (max-width: 1440px) {
   .top_banner__left p {
     font-size: 16px;
@@ -611,6 +625,10 @@
   .about__us__content__ls {
     width: 80%;
     display: flex;
+  }
+  .sponser_banner {
+    font-size: 20px;
+    text-align: center;
   }
 }
 @media screen and (max-width: 610px) {

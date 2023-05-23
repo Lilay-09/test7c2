@@ -194,3 +194,18 @@ a:link {
   width: 100%;
   height: 500px;
 }
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-break: anywhere;
+}
+
+/* add active for filter Year */
+.add_active {
+  color: #ef7832;
+}

@@ -2,9 +2,10 @@ import React from "react";
 import styles from "../../styles/JoinUs.module.css";
 
 const Join_membership = ({ data }) => {
+  console.log(data);
   return (
     <div className={styles.membership__benifits}>
-      {data.sub_list.map((item, i) => {
+      {data.map((item, i) => {
         return (
           <div key={item.id}>
             <h4>{item.title}</h4>

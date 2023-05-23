@@ -16,9 +16,7 @@ const mapUrl =
 const coordinates = getLatLongFromMapUrl(mapUrl);
 if (coordinates) {
   const { latitude, longitude } = coordinates;
-  console.log("Latitude:", latitude);
-  console.log("Longitude:", longitude);
 } else {
-  console.log("Unable to extract latitude and longitude from the map URL.");
+  // console.log("Unable to extract latitude and longitude from the map URL.");
 }
 export default getLatLongFromMapUrl;

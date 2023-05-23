@@ -141,6 +141,9 @@ const HomeScreen = (props) => {
       <Blog data={homeapi.blogs.sub_lists} />
       <Member data={homeapi.team_members} />
       <OurGallary data={homeapi.galleries} />
+      <div className={styles.sponser_banner}>
+        <span>{homeapi.sponser.text}</span>
+      </div>
     </Layout>
   );
 };

@@ -8,7 +8,6 @@ import React from "react";
 import ImageComp from "../ImageComp";
 
 const Home_aboutus = ({ data }) => {
-  // if (data === "" || data === null) return <div>Under Development</div>;
   return (
     <div className={styles.about__us}>
       <div>

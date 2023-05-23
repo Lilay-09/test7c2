@@ -30,7 +30,7 @@ const JoinUs = (props) => {
         opposite
         right={
           <div className={styles.membership__benifits_img}>
-            <ImageComp imageUrl={joinUsApi.join_us.image_url} />
+            <ImageComp imageUrl={joinUsApi.join_img.image_url} />
           </div>
         }
       />

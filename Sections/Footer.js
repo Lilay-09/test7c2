@@ -22,7 +22,7 @@ const Footer = () => {
   const [contact, setContact] = useState([]);
   useEffect(() => {
     axios
-      .post(`https://admin.7c-kh.com/api/social-media/list`)
+      .post(`http://127.0.0.1:8000/api/social-media/list`)
       .then((res) => {
         setMedia(res.data.data);
       })
@@ -30,7 +30,7 @@ const Footer = () => {
         console.log(err);
       });
     axios
-      .post(`https://admin.7c-kh.com/api/company-profile/list`)
+      .post(`http://127.0.0.1:8000/api/company-profile/list`)
       .then((res) => {
         setFoot(res.data.data);
       })
@@ -39,7 +39,7 @@ const Footer = () => {
       });
 
     axios
-      .post(`https://admin.7c-kh.com/api/contact-us/list`)
+      .post(`http://127.0.0.1:8000/api/contact-us/list`)
       .then((res) => {
         setContact(res.data.data);
       })
