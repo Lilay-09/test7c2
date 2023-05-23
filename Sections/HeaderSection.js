@@ -53,7 +53,7 @@ export const HeaderSection = ({ title }) => {
 
   useEffect(() => {
     axios
-      .post(`http://127.0.0.1:8000/api/our-services/limit`)
+      .post(`https://admin.7c-kh.com/api/our-services/limit`)
       .then((res) => {
         setData(res.data.data);
       })
@@ -64,7 +64,7 @@ export const HeaderSection = ({ title }) => {
 
   useEffect(() => {
     axios
-      .post(`http://127.0.0.1:8000/api/social-media/list`)
+      .post(`https://admin.7c-kh.com/api/social-media/list`)
       .then((res) => {
         setMedia(res.data.data);
       })
@@ -72,7 +72,7 @@ export const HeaderSection = ({ title }) => {
         console.log(err);
       });
     axios
-      .post(`http://127.0.0.1:8000/api/contact-us/list`)
+      .post(`https://admin.7c-kh.com/api/contact-us/list`)
       .then((res) => {
         setContact(res.data.data);
       })
@@ -80,7 +80,7 @@ export const HeaderSection = ({ title }) => {
         console.log(err);
       });
     axios
-      .post(`http://127.0.0.1:8000/api/company-profile/list`)
+      .post(`https://admin.7c-kh.com/api/company-profile/list`)
       .then((res) => {
         setCom(res.data.data);
       })
