@@ -87,7 +87,7 @@ const Blog_blogContainer = ({ data }) => {
       style={{ width: "100%" }}
     >
       <Title cap fs>
-        Blog
+        {data.title}
       </Title>
       <div>
         <p>{data.description}</p>

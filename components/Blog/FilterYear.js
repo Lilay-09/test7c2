@@ -7,16 +7,17 @@ import { useRouter } from "next/router";
 
 const FilterYear = ({ data, curYear }) => {
   const router = useRouter();
-
   return (
     <div style={{ marginTop: "5vw" }}>
       <ListCard title={"Filter News By Year"}>
         {data.filter_year.map((item, i) => {
           return (
             <a
-              href={`/blog/year/${Number(item)}`}
+              href={`/blog/year/${Number(item.year)}`}
               key={i}
-              className={`nav-link ${curYear === item ? "add_active" : null}`}
+              className={`nav-link ${
+                curYear === item.year ? "add_active" : null
+              }`}
             >
               <FontAwesomeIcon icon={faCaretRight} />
               <span>{item.year}</span>

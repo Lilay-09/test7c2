@@ -28,7 +28,7 @@ const BlogDetails = (props) => {
       <SplitContainer
         left={
           <div className={styles.blog_details_container}>
-            <Title cap>Blogs</Title>
+            <Title cap>{blogs_api.blogs.title}</Title>
             <div className={styles.blog_details_desc}>
               <p>{blog_details.title}</p>
             </div>
