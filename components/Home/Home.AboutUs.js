@@ -21,17 +21,16 @@ const Home_aboutus = ({ data }) => {
         </div>
         <p>{data.photo_text}</p>
         <p>{data.video_text}</p>
-        {data > 0 &&
-          data.sub_lists.map((item, i) => {
-            return (
-              <div className={styles.about__us__content__ls} key={item.id}>
-                <span>
-                  <FontAwesomeIcon icon={faCheck} fontSize={20} />
-                </span>
-                {item.description}
-              </div>
-            );
-          })}
+        {data.sub_lists.map((item, i) => {
+          return (
+            <div className={styles.about__us__content__ls} key={item.id}>
+              <span>
+                <FontAwesomeIcon icon={faCheck} fontSize={20} />
+              </span>
+              {item.description}
+            </div>
+          );
+        })}
         <div className={styles.about__us__content_video}>
           <iframe width="100%" height="100%" src={data.video}></iframe>
         </div>
