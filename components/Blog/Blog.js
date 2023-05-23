@@ -80,7 +80,7 @@ const Blog_blogContainer = ({ data }) => {
     setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
     setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
   }
-  if (data.sub_list.length <= 0) return <div>Page Under Development</div>;
+  // if (data.sub_list.length <= 0) return <div>Page Under Development</div>;
   return (
     <div
       className={serviceStyles.service_left_container}
@@ -115,17 +115,19 @@ const Blog_blogContainer = ({ data }) => {
           );
         })}
       </div>
-      <div className="pagination_key">
-        {currentPage !== 1 && (
-          <PaginationBtn title="Prev" onClick={handlePrevbtn} />
-        )}
+      {data.sub_list.length > 0 && (
+        <div className="pagination_key">
+          {currentPage !== 1 && (
+            <PaginationBtn title="Prev" onClick={handlePrevbtn} />
+          )}
 
-        <div className={`pagination_number`}>{rederPageNumbers}</div>
+          <div className={`pagination_number`}>{rederPageNumbers}</div>
 
-        {currentPage !== pages.length && (
-          <PaginationBtn title="Next" onClick={handleNextbtn} />
-        )}
-      </div>
+          {currentPage !== pages.length && (
+            <PaginationBtn title="Next" onClick={handleNextbtn} />
+          )}
+        </div>
+      )}
     </div>
     // <div
     //   className={serviceStyles.service_left_container}
