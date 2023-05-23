@@ -105,6 +105,8 @@
   font-weight: 700;
   font-size: 18px;
   align-self: center;
+  /* background-color: #c9b8af; */
+  width: 40%;
 }
 .management__container_content {
   display: flex;
@@ -136,18 +138,22 @@
 }
 
 .core__values {
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
 }
 .core__values_content {
   display: grid;
+  /* margin: 0 auto;
+  width: 80%; */
   grid-template-columns: repeat(2, minmax(350px, 30vw));
+  /* background-color: #ef7832; */
 }
 ._core_values__item {
   display: flex;
   align-items: center;
   gap: 0.8vw;
   margin: 0.8rem 0;
+  line-break: anywhere;
   /* background-color: #ef7832; */
 }
 .__core_val_img {
@@ -163,6 +169,15 @@
 .__core_val_img img {
   width: 80%;
   height: 80%;
+}
+@media screen and (max-width: 1290px) {
+  .core__values_content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  ._core_values__item {
+    width: 90vw;
+  }
 }
 @media screen and (max-width: 768px) {
   .management__container_content {

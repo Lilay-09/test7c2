@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { ToCap } from "../../utils/ToCapitalize";
 import Image from "next/image";
 import { postData } from "../../utils/fetchData";
+import ImageComp from "../../components/ImageComp";
 const ContactUs = (props) => {
   const router = useRouter();
   const { banner, contact_us } = props;
@@ -25,8 +26,19 @@ const ContactUs = (props) => {
         <div style={{ marginBottom: "3vw" }}>
           <Title cap>Contact us</Title>
         </div>
-        <Google_map src={contact_us.map_url} />
+        <div className={styles.map_picc}>
+          <ImageComp imageUrl={contact_us.image_url} />
+        </div>
+        {/* <Google_map src={contact_us.map_url} /> */}
+        <Link
+          href={`${contact_us.map_url}`}
+          target="_blank"
+          className={styles.direction}
+        >
+          Get Direction
+        </Link>
       </div>
+
       <div className={styles.contact__via_any}>
         <div className={styles.contact__thing}>
           <div className={styles.contact_logo}>
