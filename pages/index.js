@@ -138,9 +138,9 @@ const HomeScreen = (props) => {
 
       <OurServices data={homeapi.our_services} />
 
-      <Blog data={homeapi.blogs.sub_lists} />
+      {/* <Blog data={homeapi.blogs.sub_lists} />
       <Member data={homeapi.team_members} />
-      <OurGallary data={homeapi.galleries} />
+      <OurGallary data={homeapi.galleries} /> */}
       <div className={styles.sponser_banner}>
         <span>{homeapi.sponser.text}</span>
       </div>
