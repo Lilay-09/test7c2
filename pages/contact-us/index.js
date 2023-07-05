@@ -129,14 +129,14 @@ const ContactUs = (props) => {
 
 export default ContactUs;
 export const getServerSideProps = async () => {
-  const res = await postData(`contact-us-banner/get`);
-  const res1 = await postData(`contact-us/list`);
-  const apiservice = await res;
-  const contact = await res1;
+  // const res = await postData(`contact-us-banner/get`);
+  // const res1 = await postData(`contact-us/list`);
+  // const apiservice = await res;
+  // const contact = await res1;
   return {
     props: {
-      banner: apiservice.data,
-      contact_us: contact.data,
+      // banner: apiservice.data,
+      // contact_us: contact.data,
     },
   };
 };
