@@ -94,7 +94,7 @@ const HomeScreen = (props) => {
         })}
       </div>
       <Home_aboutus data={homeapi.about_us} />
-      {/* <div className={styles.why_choosing_us}>
+      <div className={styles.why_choosing_us}>
         <div className={styles.why_choosing_us__big__card}>
           <div className={styles.why_choosing_us__big__card_title}>
             <h3>{why.title}</h3>
@@ -104,7 +104,7 @@ const HomeScreen = (props) => {
             <h3>{why.sub_title}</h3>
           </div>
           <p>{why.description}</p>
-  
+          {/* <button className={styles.learn__more_btn}>Learn More</button> */}
         </div>
         <div className={styles.small__card_avatar_container}>
           {why.sub_lists.map((item, i) => {
@@ -124,7 +124,7 @@ const HomeScreen = (props) => {
             );
           })}
         </div>
-      </div> */}
+      </div>
       <div className={styles.company_service__details}>
         {company_description.map((item, i) => {
           return (
