@@ -15,7 +15,7 @@ const Partner = (props) => {
   const router = useRouter();
   return (
     <Layout title={router.pathname}>
-      <BannerLink img={partnerApi.banner.image_url}>
+      {/* <BannerLink img={partnerApi.banner.image_url}>
         <Link href="/">Home</Link>
         <FontAwesomeIcon icon={faAngleRight} />
         <Link href="/partner">{ToCap(router.pathname)}</Link>
@@ -24,7 +24,8 @@ const Partner = (props) => {
       <Partner_investment
         d1={partnerApi.investment}
         d2={partnerApi.service_provider}
-      />
+      /> */}
+      asdfa
     </Layout>
   );
 };

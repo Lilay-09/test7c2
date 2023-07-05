@@ -15,13 +15,13 @@ const Layout = ({ children, title, width, gap, mbt, gap0, join_us }) => {
   };
   return (
     <div>
-      {/* <HeaderSection
+      <HeaderSection
         title={
           title
             ? `SevenC ~ ${title.replace("-", " ").substring(1).toUpperCase()}`
             : "SevenC"
         }
-      /> */}
+      />
       <div>{children}</div>
       {/* {!join_us && <JoinUs />}
       <Footer /> */}
