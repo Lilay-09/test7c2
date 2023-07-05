@@ -31,7 +31,6 @@ const HomeScreen = (props) => {
   const company_description = homeapi.company_description;
 
   const [watchVideo, setWatchedVideo] = useState(false);
-
   return (
     <Layout>
       <div className={styles.top_banner}>
@@ -79,6 +78,7 @@ const HomeScreen = (props) => {
           </div>
         )}
       </div>
+
       <div className={styles.value_chain}>
         {homeapi.values_chain.map((item, i) => {
           return (
