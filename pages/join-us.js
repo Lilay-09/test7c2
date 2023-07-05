@@ -19,8 +19,7 @@ const JoinUs = (props) => {
 
   return (
     <Layout join_us title={router.pathname}>
-      asdfadsf
-      {/* <BannerLink img={joinUsApi.banner.image_url}>
+      <BannerLink img={joinUsApi.banner.image_url}>
         <Link href="/">Home</Link>
         <FontAwesomeIcon icon={faAngleRight} />
         <Link href="/join-us">{ToCap(router.pathname)}</Link>
@@ -34,19 +33,19 @@ const JoinUs = (props) => {
             <ImageComp imageUrl={joinUsApi.join_img.image_url} />
           </div>
         }
-      /> */}
+      />
     </Layout>
   );
 };
 
 export default JoinUs;
 export const getServerSideProps = async () => {
-  // const res1 = await postData("join-us-page");
-  // const api_service = await res1;
+  const res1 = await postData("join-us-page");
+  const api_service = await res1;
 
   return {
     props: {
-      // joinUsApi: api_service.data,
+      joinUsApi: api_service.data,
     },
   };
 };

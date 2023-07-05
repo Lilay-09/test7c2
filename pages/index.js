@@ -33,119 +33,118 @@ const HomeScreen = (props) => {
   const [watchVideo, setWatchedVideo] = useState(false);
 
   return (
-    <Layout>sdfsdf</Layout>
-    // <Layout>
-    //   <div className={styles.top_banner}>
-    //     <div className={styles.top_banner__left}>
-    //       <h1>{banner.title}</h1>
-    //       <p>{banner.description}</p>
-    //       <div className={styles.banner_left__getStart}>
-    //         {/* <button>Get Started</button> */}
-    //         <div
-    //           className={styles.video__play}
-    //           onClick={() => setWatchedVideo(!watchVideo)}
-    //         >
-    //           <div className={styles.play_button}>
-    //             <Image
-    //               src="/images/polygon.png"
-    //               width={300}
-    //               height={300}
-    //               alt="play_btn"
-    //               priority
-    //             />
-    //           </div>
-    //           <span>Watch Video</span>
-    //         </div>
-    //       </div>
-    //     </div>
+    <Layout>
+      <div className={styles.top_banner}>
+        <div className={styles.top_banner__left}>
+          <h1>{banner.title}</h1>
+          <p>{banner.description}</p>
+          <div className={styles.banner_left__getStart}>
+            {/* <button>Get Started</button> */}
+            <div
+              className={styles.video__play}
+              onClick={() => setWatchedVideo(!watchVideo)}
+            >
+              <div className={styles.play_button}>
+                <Image
+                  src="/images/polygon.png"
+                  width={300}
+                  height={300}
+                  alt="play_btn"
+                  priority
+                />
+              </div>
+              <span>Watch Video</span>
+            </div>
+          </div>
+        </div>
 
-    //     <div className={styles.top_banner__right}>
-    //       <ImageComp imageUrl={banner.image_url} />
-    //     </div>
-    //     {watchVideo && (
-    //       <div className={styles.watch__video}>
-    //         <div
-    //           className={styles.__exit_btn}
-    //           onClick={() => setWatchedVideo(false)}
-    //         >
-    //           X
-    //         </div>
-    //         <iframe
-    //           width="100%"
-    //           height="100%"
-    //           src={banner.video}
-    //           allowFullScreen
-    //           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    //         ></iframe>
-    //       </div>
-    //     )}
-    //   </div>
-    //   <div className={styles.value_chain}>
-    //     {homeapi.values_chain.map((item, i) => {
-    //       return (
-    //         <div className={styles.value_chain__card} key={item.id}>
-    //           <div className={styles.value_chain__card_logo}>
-    //             <ImageComp imageUrl={item.image_url} />
-    //           </div>
-    //           <div className={styles.value_chain__card_text}>
-    //             <span>{item.title}</span>
-    //           </div>
-    //         </div>
-    //       );
-    //     })}
-    //   </div>
-    //   <Home_aboutus data={homeapi.about_us} />
-    //   <div className={styles.why_choosing_us}>
-    //     <div className={styles.why_choosing_us__big__card}>
-    //       <div className={styles.why_choosing_us__big__card_title}>
-    //         <h3>{why.title}</h3>
-    //         <div className={styles.lineStyle}></div>
-    //       </div>
-    //       <div className={styles.choosing_us}>
-    //         <h3>{why.sub_title}</h3>
-    //       </div>
-    //       <p>{why.description}</p>
-    //       {/* <button className={styles.learn__more_btn}>Learn More</button> */}
-    //     </div>
-    //     <div className={styles.small__card_avatar_container}>
-    //       {why.sub_lists.map((item, i) => {
-    //         return (
-    //           <div
-    //             className={styles.why_choosing_us__small__card}
-    //             key={item.id}
-    //           >
-    //             <div className={styles.small__card_avatar}>
-    //               <ImageComp imageUrl={item.image_url} />
-    //             </div>
-    //             <div className={styles.small_card__text}>
-    //               <h5>{item.title}</h5>
-    //               <p>{item.description}</p>
-    //             </div>
-    //           </div>
-    //         );
-    //       })}
-    //     </div>
-    //   </div>
-    //   <div className={styles.company_service__details}>
-    //     {company_description.map((item, i) => {
-    //       return (
-    //         <div key={item.id}>
-    //           <p>{item.description}</p>
-    //           <p>{item.title}</p>
-    //         </div>
-    //       );
-    //     })}
-    //   </div>
+        <div className={styles.top_banner__right}>
+          <ImageComp imageUrl={banner.image_url} />
+        </div>
+        {watchVideo && (
+          <div className={styles.watch__video}>
+            <div
+              className={styles.__exit_btn}
+              onClick={() => setWatchedVideo(false)}
+            >
+              X
+            </div>
+            <iframe
+              width="100%"
+              height="100%"
+              src={banner.video}
+              allowFullScreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            ></iframe>
+          </div>
+        )}
+      </div>
+      <div className={styles.value_chain}>
+        {homeapi.values_chain.map((item, i) => {
+          return (
+            <div className={styles.value_chain__card} key={item.id}>
+              <div className={styles.value_chain__card_logo}>
+                <ImageComp imageUrl={item.image_url} />
+              </div>
+              <div className={styles.value_chain__card_text}>
+                <span>{item.title}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <Home_aboutus data={homeapi.about_us} />
+      <div className={styles.why_choosing_us}>
+        <div className={styles.why_choosing_us__big__card}>
+          <div className={styles.why_choosing_us__big__card_title}>
+            <h3>{why.title}</h3>
+            <div className={styles.lineStyle}></div>
+          </div>
+          <div className={styles.choosing_us}>
+            <h3>{why.sub_title}</h3>
+          </div>
+          <p>{why.description}</p>
+          {/* <button className={styles.learn__more_btn}>Learn More</button> */}
+        </div>
+        <div className={styles.small__card_avatar_container}>
+          {why.sub_lists.map((item, i) => {
+            return (
+              <div
+                className={styles.why_choosing_us__small__card}
+                key={item.id}
+              >
+                <div className={styles.small__card_avatar}>
+                  <ImageComp imageUrl={item.image_url} />
+                </div>
+                <div className={styles.small_card__text}>
+                  <h5>{item.title}</h5>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className={styles.company_service__details}>
+        {company_description.map((item, i) => {
+          return (
+            <div key={item.id}>
+              <p>{item.description}</p>
+              <p>{item.title}</p>
+            </div>
+          );
+        })}
+      </div>
 
-    //   <OurServices data={homeapi.our_services} />
+      <OurServices data={homeapi.our_services} />
 
-    //   <Blog data={homeapi.blogs.sub_lists} />
-    //   <Member data={homeapi.team_members} />
-    //   <OurGallary data={homeapi.galleries} />
-    //   <div className={styles.sponser_banner}>
-    //     <span>{homeapi.sponser.text}</span>
-    //   </div>
-    // </Layout>
+      <Blog data={homeapi.blogs.sub_lists} />
+      <Member data={homeapi.team_members} />
+      <OurGallary data={homeapi.galleries} />
+      <div className={styles.sponser_banner}>
+        <span>{homeapi.sponser.text}</span>
+      </div>
+    </Layout>
   );
 };
 

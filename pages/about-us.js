@@ -26,7 +26,7 @@ const AboutUs = (props) => {
 
   return (
     <Layout title={router.pathname}>
-      {/* <BannerLink img={banner.image_url}>
+      <BannerLink img={banner.image_url}>
         <Link href="/">Home</Link>
         <FontAwesomeIcon icon={faAngleRight} />
         <Link href="/about-us">{ToCap(router.pathname)}</Link>
@@ -49,8 +49,7 @@ const AboutUs = (props) => {
           })}
         </div>
       </div>
-      <About_management data={about_us_api.management_team} /> */}
-      asdfsd
+      <About_management data={about_us_api.management_team} />
     </Layout>
   );
 };
