@@ -30,7 +30,7 @@ const OurServices = ({ data }) => {
               </Link>
               <div className={styles.services__content__text}>
                 <h5>{item.title}</h5>
-                <p>{item.description}</p>
+                <p>{item.description.substring(0, 120)}...</p>
               </div>
             </div>
           );
