@@ -8,6 +8,19 @@ const nextConfig = {
   env: {
     API_URL: "https://admin.7c-kh.com",
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Referrer-Policy",
+            value: "origin-when-cross-origin",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
