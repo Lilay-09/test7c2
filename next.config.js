@@ -6,8 +6,8 @@ const nextConfig = {
     unoptimized: true,
   },
   env: {
-    BASE_API_URL1: process.env.BASE_API_URL,
-    BASE_API_URL_MAIN1: process.env.BASE_API_URL_MAIN,
+    BASE_API_URL1: process.env.BASE_API_URL_1,
+    BASE_API_URL_MAIN1: process.env.BASE_API_URL_MAIN_1,
   },
 };
 
