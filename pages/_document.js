@@ -24,7 +24,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="referrer" content="no-referrer" />
+          <meta name="referrer" content="strict-origin-when-cross-origin" />
         </Head>
         <body>
           <Main />
