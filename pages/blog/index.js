@@ -17,7 +17,7 @@ const Blog = (props) => {
 
   return (
     <Layout title={router.pathname}>
-      <BannerLink img={blogs_api.banner.image_url}>
+      {/* <BannerLink img={blogs_api.banner.image_url}>
         <Link href="/">Home</Link>
         <FontAwesomeIcon icon={faAngleRight} />
         <Link href="/blog">{ToCap(router.pathname)}</Link>
@@ -25,18 +25,19 @@ const Blog = (props) => {
       <SplitContainer
         left={<Blog_blogContainer data={blogs_api.blogs} />}
         right={<FilterYear data={blogs_api} />}
-      />
+      /> */}
+      sdf
     </Layout>
   );
 };
 
 export default Blog;
-export const getServerSideProps = async () => {
-  const res = await postData("blogs-page");
-  const api_service = await res;
-  return {
-    props: {
-      blogs_api: api_service.data,
-    },
-  };
-};
+// export const getServerSideProps = async () => {
+//   const res = await postData("blogs-page");
+//   const api_service = await res;
+//   return {
+//     props: {
+//       blogs_api: api_service.data,
+//     },
+//   };
+// };

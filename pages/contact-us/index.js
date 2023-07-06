@@ -17,7 +17,8 @@ const ContactUs = (props) => {
   const { banner, contact_us } = props;
   return (
     <Layout join_us title={router.pathname}>
-      <BannerLink img={banner.image_url}>
+      sdfsdf
+      {/* <BannerLink img={banner.image_url}>
         <Link href="/">Home</Link>
         <FontAwesomeIcon icon={faAngleRight} />
         <Link href="/contact-us">{ToCap(router.pathname)}</Link>
@@ -29,7 +30,6 @@ const ContactUs = (props) => {
         <div className={styles.map_picc}>
           <ImageComp imageUrl={contact_us.image_url} />
         </div>
-        {/* <Google_map src={contact_us.map_url} /> */}
         <Link
           href={`${contact_us.map_url}`}
           target="_blank"
@@ -121,21 +121,21 @@ const ContactUs = (props) => {
         <div className={styles.btn__send_msg}>
           <button type="submit">Send Message</button>
         </div>
-      </form>
+      </form> */}
     </Layout>
   );
 };
 
 export default ContactUs;
-export const getServerSideProps = async () => {
-  const res = await postData(`contact-us-banner/get`);
-  const res1 = await postData(`contact-us/list`);
-  const apiservice = await res;
-  const contact = await res1;
-  return {
-    props: {
-      banner: apiservice.data,
-      contact_us: contact.data,
-    },
-  };
-};
+// export const getServerSideProps = async () => {
+//   const res = await postData(`contact-us-banner/get`);
+//   const res1 = await postData(`contact-us/list`);
+//   const apiservice = await res;
+//   const contact = await res1;
+//   return {
+//     props: {
+//       banner: apiservice.data,
+//       contact_us: contact.data,
+//     },
+//   };
+// };

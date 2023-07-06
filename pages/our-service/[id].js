@@ -22,7 +22,8 @@ const OurService = (props) => {
   // const route = router.asPath.replace(router.asPath.slice(0, 13), "");
   return (
     <Layout>
-      <BannerLink img={services_lst.banner.image_url}>
+      sd
+      {/* <BannerLink img={services_lst.banner.image_url}>
         <Link href="/">Home</Link>
         <FontAwesomeIcon icon={faAngleRight} />
         <Link href={`/our-service/${ourServices.id}`}>Our Service</Link>
@@ -77,22 +78,22 @@ const OurService = (props) => {
             </ListCard>
           </>
         }
-      />
+      /> */}
     </Layout>
   );
 };
 
 export default OurService;
-export const getServerSideProps = async (context) => {
-  const { params } = context;
-  const { id } = params;
-  const res = await postData(`our-services/front/details`, { id: id });
-  const res_banner = await postData("our-services-page");
-  const apiservice = await res;
-  return {
-    props: {
-      ourServices: apiservice.data[0] ? apiservice.data[0] : apiservice.data,
-      services_lst: res_banner.data,
-    },
-  };
-};
+// export const getServerSideProps = async (context) => {
+//   const { params } = context;
+//   const { id } = params;
+//   const res = await postData(`our-services/front/details`, { id: id });
+//   const res_banner = await postData("our-services-page");
+//   const apiservice = await res;
+//   return {
+//     props: {
+//       ourServices: apiservice.data[0] ? apiservice.data[0] : apiservice.data,
+//       services_lst: res_banner.data,
+//     },
+//   };
+// };

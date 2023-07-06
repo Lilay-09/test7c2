@@ -20,7 +20,8 @@ const BlogDetails = (props) => {
   const router = useRouter();
   return (
     <Layout>
-      <BannerLink img={blogs_api.banner.image_url}>
+      sdf
+      {/* <BannerLink img={blogs_api.banner.image_url}>
         <Link href="/">Home</Link>
         <FontAwesomeIcon icon={faAngleRight} />
         <Link href="/blog">Blog</Link>
@@ -71,23 +72,23 @@ const BlogDetails = (props) => {
             </ListCard>
           </div>
         }
-      />
+      /> */}
     </Layout>
   );
 };
 
 export default BlogDetails;
 
-export const getServerSideProps = async (ctx) => {
-  const { params } = ctx;
-  const { id } = params;
-  const res = await postData("blogs-page");
-  const res_details = await postData("blogs-page-details", { id: id });
-  const api_service = await res;
-  return {
-    props: {
-      blogs_api: api_service.data,
-      blog_details: res_details.data,
-    },
-  };
-};
+// export const getServerSideProps = async (ctx) => {
+//   const { params } = ctx;
+//   const { id } = params;
+//   const res = await postData("blogs-page");
+//   const res_details = await postData("blogs-page-details", { id: id });
+//   const api_service = await res;
+//   return {
+//     props: {
+//       blogs_api: api_service.data,
+//       blog_details: res_details.data,
+//     },
+//   };
+// };

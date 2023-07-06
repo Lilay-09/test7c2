@@ -33,12 +33,12 @@ const HomeScreen = (props) => {
   const [watchVideo, setWatchedVideo] = useState(false);
   return (
     <Layout>
-      <div className={styles.top_banner}>
+      adsfasd
+      {/* <div className={styles.top_banner}>
         <div className={styles.top_banner__left}>
           <h1>{banner.title}</h1>
           <p>{banner.description}</p>
           <div className={styles.banner_left__getStart}>
-            {/* <button>Get Started</button> */}
             <div
               className={styles.video__play}
               onClick={() => setWatchedVideo(!watchVideo)}
@@ -104,7 +104,6 @@ const HomeScreen = (props) => {
             <h3>{why.sub_title}</h3>
           </div>
           <p>{why.description}</p>
-          {/* <button className={styles.learn__more_btn}>Learn More</button> */}
         </div>
         <div className={styles.small__card_avatar_container}>
           {why.sub_lists.map((item, i) => {
@@ -143,18 +142,18 @@ const HomeScreen = (props) => {
       <OurGallary data={homeapi.galleries} />
       <div className={styles.sponser_banner}>
         <span>{homeapi.sponser.text}</span>
-      </div>
+      </div> */}
     </Layout>
   );
 };
 
 export default HomeScreen;
-export const getServerSideProps = async () => {
-  const res = await postData(`home-page`);
-  const apiservice = await res;
-  return {
-    props: {
-      homeapi: apiservice.data === null ? "" : apiservice.data,
-    },
-  };
-};
+// export const getServerSideProps = async () => {
+//   const res = await postData(`home-page`);
+//   const apiservice = await res;
+//   return {
+//     props: {
+//       homeapi: apiservice.data === null ? "" : apiservice.data,
+//     },
+//   };
+// };

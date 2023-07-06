@@ -14,8 +14,8 @@ const Partner = (props) => {
   const { partnerApi } = props;
   const router = useRouter();
   return (
-    <Layout title={router.pathname}>
-      <BannerLink img={partnerApi.banner.image_url}>
+    <Layout>
+      {/* <BannerLink img={partnerApi.banner.image_url}>
         <Link href="/">Home</Link>
         <FontAwesomeIcon icon={faAngleRight} />
         <Link href="/partner">{ToCap(router.pathname)}</Link>
@@ -24,18 +24,19 @@ const Partner = (props) => {
       <Partner_investment
         d1={partnerApi.investment}
         d2={partnerApi.service_provider}
-      />
+      /> */}
+      asdfa
     </Layout>
   );
 };
 
-export default Partner;
-export const getServerSideProps = async () => {
-  const res = await postData(`partner-page`);
-  const apiservice = await res;
-  return {
-    props: {
-      partnerApi: apiservice.data,
-    },
-  };
-};
+// export default Partner;
+// export const getServerSideProps = async () => {
+//   const res = await postData(`partner-page`);
+//   const apiservice = await res;
+//   return {
+//     props: {
+//       partnerApi: apiservice.data,
+//     },
+//   };
+// };

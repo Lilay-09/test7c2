@@ -102,7 +102,7 @@ const Blog_blogContainer = (props) => {
 
   return (
     <Layout width={100}>
-      <SplitContainer
+      {/* <SplitContainer
         left={
           <div
             className={serviceStyles.service_left_container}
@@ -151,7 +151,8 @@ const Blog_blogContainer = (props) => {
           </div>
         }
         right={<FilterYear data={filterYear} curYear={dataYear} />}
-      />
+      /> */}
+      sdf
     </Layout>
   );
 };
