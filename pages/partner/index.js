@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../Sections/Layout";
 import BannerLink from "../../components/BannerLink";
 import Link from "next/link";
@@ -9,23 +9,45 @@ import { useRouter } from "next/router";
 import { ToCap } from "../../utils/ToCapitalize";
 import { postData } from "../../utils/fetchData";
 import Partner_investment from "../../components/Partner/Investment_ServiceProvider";
+import { useState } from "react";
 
 const Partner = (props) => {
-  const { partnerApi } = props;
+  const [partnerApi, setPartnerAPI] = useState([]);
   const router = useRouter();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.API_URL}/api/partner-page`,
+          {
+            method: "POST",
+          }
+        );
+        const json = await response.json();
+        setPartnerAPI(json.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <Layout>
-      {/* <BannerLink img={partnerApi.banner.image_url}>
-        <Link href="/">Home</Link>
-        <FontAwesomeIcon icon={faAngleRight} />
-        <Link href="/partner">{ToCap(router.pathname)}</Link>
-      </BannerLink>
-      <Partner__comp data={partnerApi.partner} />
-      <Partner_investment
-        d1={partnerApi.investment}
-        d2={partnerApi.service_provider}
-      /> */}
-      asdfa
+      {partnerApi.banner ? (
+        <BannerLink img={partnerApi.banner.image_url}>
+          <Link href="/">Home</Link>
+          <FontAwesomeIcon icon={faAngleRight} />
+          <Link href="/partner">{ToCap(router.pathname)}</Link>
+        </BannerLink>
+      ) : null}
+      {partnerApi.partner ? <Partner__comp data={partnerApi.partner} /> : null}
+      {partnerApi.investment && partnerApi.service_provider ? (
+        <Partner_investment
+          d1={partnerApi.investment}
+          d2={partnerApi.service_provider}
+        />
+      ) : null}
     </Layout>
   );
 };

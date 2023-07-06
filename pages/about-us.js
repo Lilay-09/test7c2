@@ -37,8 +37,6 @@ const AboutUs = (props) => {
     };
     fetchData();
   }, []);
-  // const banner = about_us_api.banner;
-  console.log(about_us_api);
 
   return (
     <Layout title={router.pathname}>
@@ -77,7 +75,6 @@ const AboutUs = (props) => {
     </Layout>
   );
 };
-
 export default AboutUs;
 // export const getServerSideProps = async () => {
 //   const res = await postData(`about-us-page`);

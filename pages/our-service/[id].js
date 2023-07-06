@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../Sections/Layout";
 import BannerLink from "../../components/BannerLink";
 import Link from "next/link";
@@ -16,20 +16,58 @@ import { postData } from "../../utils/fetchData";
 import Image from "next/image";
 import ImageComp from "../../components/ImageComp";
 const OurService = (props) => {
-  const { services_lst, ourServices } = props;
-
+  // const { services_lst, ourServices } = props;
+  const [services_lst, setServiceLst] = useState([]);
+  const [ourServices, setOurServices] = useState([]);
   const router = useRouter();
+  let { id } = router.query;
+  useEffect(() => {
+    const fetchDataBanner = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.API_URL}/api/our-services-page`,
+          {
+            method: "POST",
+          }
+        );
+        const json = await response.json();
+        setServiceLst(json.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    const fetchServiceitems = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.API_URL}/api/our-services/front/details`,
+          {
+            method: "POST",
+            body: JSON.stringify({ id: id }),
+          }
+        );
+        const json = await response.json();
+        setServiceLst(json.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchServiceitems();
+    fetchDataBanner();
+  }, []);
   // const route = router.asPath.replace(router.asPath.slice(0, 13), "");
   return (
     <Layout>
-      sd
-      {/* <BannerLink img={services_lst.banner.image_url}>
-        <Link href="/">Home</Link>
-        <FontAwesomeIcon icon={faAngleRight} />
-        <Link href={`/our-service/${ourServices.id}`}>Our Service</Link>
-        <FontAwesomeIcon icon={faAngleRight} />
-        <Link href={`/our-service/${ourServices.id}`}>{ourServices.title}</Link>
-      </BannerLink>
+      {services_lst.banner ? (
+        <BannerLink img={services_lst.banner.image_url}>
+          <Link href="/">Home</Link>
+          <FontAwesomeIcon icon={faAngleRight} />
+          <Link href={`/our-service/${ourServices.id}`}>Our Service</Link>
+          <FontAwesomeIcon icon={faAngleRight} />
+          <Link href={`/our-service/${ourServices.id}`}>
+            {ourServices.title}
+          </Link>
+        </BannerLink>
+      ) : null}
       <SplitContainer
         left={
           <div className={styles.services__container}>
@@ -63,22 +101,24 @@ const OurService = (props) => {
             <Title cap fs>
               Related Products
             </Title>
-            <ListCard title="Services">
-              {services_lst.services_lists.map((item, i) => {
-                return (
-                  <BodyActiveLink
-                    href={`/our-service/${item.id}`}
-                    key={item.id}
-                  >
-                    <FontAwesomeIcon icon={faCaretRight} />
-                    <span>{item.title}</span>
-                  </BodyActiveLink>
-                );
-              })}
-            </ListCard>
+            {services_lst.services_lists ? (
+              <ListCard title="Services">
+                {services_lst.services_lists.map((item, i) => {
+                  return (
+                    <BodyActiveLink
+                      href={`/our-service/${item.id}`}
+                      key={item.id}
+                    >
+                      <FontAwesomeIcon icon={faCaretRight} />
+                      <span>{item.title}</span>
+                    </BodyActiveLink>
+                  );
+                })}
+              </ListCard>
+            ) : null}
           </>
         }
-      /> */}
+      />
     </Layout>
   );
 };
