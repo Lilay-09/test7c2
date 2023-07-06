@@ -166,7 +166,6 @@ export const HeaderSection = ({ title }) => {
               }}
             >
               <ImageComp imageUrl={com.image_url} />
-              {/* <ImageComp imageUrl="/images/logo.jpg" /> */}
             </div>
           </div>
           <div className={styles.nav__bar_mid_lnk}>

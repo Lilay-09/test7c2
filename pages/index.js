@@ -10,7 +10,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Layout from "../Sections/Layout";
-import { useMediaQuery } from "react-responsive";
 import Link from "next/link";
 
 import styles from "../styles/Home.module.css";
@@ -26,15 +25,15 @@ import { postData } from "../utils/fetchData";
 import ImageComp from "../components/ImageComp";
 const HomeScreen = (props) => {
   const { homeapi } = props;
-  // const why = homeapi.why_choosing_us;
-  // const banner = homeapi.home_banner;
-  // const company_description = homeapi.company_description;
+  const why = homeapi.why_choosing_us;
+  const banner = homeapi.home_banner;
+  const company_description = homeapi.company_description;
 
-  // const [watchVideo, setWatchedVideo] = useState(false);
+  const [watchVideo, setWatchedVideo] = useState(false);
   return (
     <Layout>
       adsfasd
-      {/* <div className={styles.top_banner}>
+      <div className={styles.top_banner}>
         <div className={styles.top_banner__left}>
           <h1>{banner.title}</h1>
           <p>{banner.description}</p>
@@ -78,7 +77,6 @@ const HomeScreen = (props) => {
           </div>
         )}
       </div>
-
       <div className={styles.value_chain}>
         {homeapi.values_chain.map((item, i) => {
           return (
@@ -134,26 +132,24 @@ const HomeScreen = (props) => {
           );
         })}
       </div>
-
       <OurServices data={homeapi.our_services} />
-
       <Blog data={homeapi.blogs.sub_lists} />
       <Member data={homeapi.team_members} />
       <OurGallary data={homeapi.galleries} />
       <div className={styles.sponser_banner}>
         <span>{homeapi.sponser.text}</span>
-      </div> */}
+      </div>
     </Layout>
   );
 };
 
 export default HomeScreen;
-// export const getServerSideProps = async () => {
-//   const res = await postData(`home-page`);
-//   const apiservice = await res;
-//   return {
-//     props: {
-//       homeapi: apiservice.data === null ? "" : apiservice.data,
-//     },
-//   };
-// };
+export const getServerSideProps = async () => {
+  const res = await postData(`home-page`);
+  const apiservice = await res;
+  return {
+    props: {
+      homeapi: apiservice.data,
+    },
+  };
+};
