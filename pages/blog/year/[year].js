@@ -13,95 +13,104 @@ import Layout from "../../../Sections/Layout";
 import SplitContainer from "../../../components/SplitContainer";
 import FilterYear from "../../../components/Blog/FilterYear";
 import ListCard from "../../../components/ListCard";
+import { useEffect } from "react";
 
 const Blog_blogContainer = (props) => {
-  const { data, dataYear, filterYear } = props;
+  const router = useRouter();
+  const [data, setDataFetch] = useState([]);
+  const [filterYear, setFilterYear] = useState([]);
+  let { year } = router.query;
+  console.log(year);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await postData("blog/year", {
+        year: Number(year),
+      });
+      const getData = await res;
+      setDataFetch(getData.data);
+    };
+    fetchData();
+    const fetchBlogs = async () => {
+      const res = await postData("blogs-page");
+      const getData = await res;
+      setFilterYear(getData.data);
+    };
+    fetchBlogs();
+  }, [year]);
+  const { query, pathname } = router;
+  let q = query.page;
+  const [data_item, setData] = useState(data);
+  const [currentPage, setCurrentPage] = useState(Number(q) ? Number(q) : 1);
+  const [itemsPerPgae, setItemPerPgae] = useState(4);
+  const [pageNumberLimit, setpageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
+  const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+  // console.log(data);
 
-  // const router = useRouter();
-  // const { query, pathname } = router;
-  // let q = query.page;
-  // const [data_item, setData] = useState(data);
-  // const [currentPage, setCurrentPage] = useState(Number(q) ? Number(q) : 1);
-  // const [itemsPerPgae, setItemPerPgae] = useState(4);
-  // const [pageNumberLimit, setpageNumberLimit] = useState(5);
-  // const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
-  // const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+  const handleClick = (event) => {
+    setCurrentPage(Number(event.target.id));
+    router.replace(`blog/?page=${event.target.id} `);
+  };
+  const handlePrevbtn = () => {
+    setCurrentPage(currentPage - 1);
+    if ((currentPage - 1) % pageNumberLimit == 0) {
+      setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    }
+    router.replace(`/blog/?page=${currentPage - 1}`);
+  };
 
-  // const handleClick = (event) => {
-  //   setCurrentPage(Number(event.target.id));
-  //   router.replace(`blog/?page=${event.target.id} `);
-  // };
-  // const handlePrevbtn = () => {
-  //   setCurrentPage(currentPage - 1);
-  //   if ((currentPage - 1) % pageNumberLimit == 0) {
-  //     setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-  //     setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
-  //   }
-  //   router.replace(`/blog/?page=${currentPage - 1}`);
-  // };
+  const handleNextbtn = () => {
+    setCurrentPage(currentPage + 1);
 
-  // const handleNextbtn = () => {
-  //   setCurrentPage(currentPage + 1);
+    if (currentPage + 1 > maxPageNumberLimit) {
+      setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+    }
+    router.replace(`/blog/?page=${currentPage + 1}`);
+  };
+  const pages = [];
+  for (let i = 1; i <= Math.ceil(data.length / itemsPerPgae); i++) {
+    pages.push(i);
+  }
 
-  //   if (currentPage + 1 > maxPageNumberLimit) {
-  //     setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-  //     setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
-  //   }
-  //   router.replace(`/blog/?page=${currentPage + 1}`);
-  // };
-  // const pages = [];
-  // for (let i = 1; i <= Math.ceil(data_item.length / itemsPerPgae); i++) {
-  //   pages.push(i);
-  // }
+  const indexOfLastItem = currentPage * itemsPerPgae;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPgae;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
-  // const indexOfLastItem = currentPage * itemsPerPgae;
-  // const indexOfFirstItem = indexOfLastItem - itemsPerPgae;
-  // const currentItems = data_item.slice(indexOfFirstItem, indexOfLastItem);
+  const handleLoadMore = () => {
+    setitemsPerPage(itemsPerPage + 5);
+  };
+  const rederPageNumbers = pages.map((number) => {
+    if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+      return (
+        <li
+          key={number}
+          id={number}
+          onClick={handleClick}
+          className={`current_num ${currentPage === number && "active"}`}
+        >
+          {number}
+        </li>
+      );
+    } else {
+      return null;
+    }
+  });
+  if (q > maxPageNumberLimit) {
+    setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+    setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+  } else if (q <= minPageNumberLimit) {
+    setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+    setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+  }
 
-  // const handleLoadMore = () => {
-  //   setitemsPerPage(itemsPerPage + 5);
-  // };
-  // const rederPageNumbers = pages.map((number) => {
-  //   if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
-  //     return (
-  //       <li
-  //         key={number}
-  //         id={number}
-  //         onClick={handleClick}
-  //         className={`current_num ${currentPage === number && "active"}`}
-  //       >
-  //         {number}
-  //       </li>
-  //     );
-  //   } else {
-  //     return null;
-  //   }
-  // });
-  // if (q > maxPageNumberLimit) {
-  //   setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-  //   setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
-  // } else if (q <= minPageNumberLimit) {
-  //   setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-  //   setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
-  // }
-
-  // if (currentItems.length <= 0)
-  //   return (
-  //     <div className="error_data_page">
-  //       <span>There is no data in {dataYear}</span>
-  //       <button
-  //         onClick={() => {
-  //           router.back();
-  //         }}
-  //       >
-  //         Back
-  //       </button>
-  //     </div>
-  //   );
+  if (currentItems.length <= 0)
+    return <div className="error_data_page">Loading...</div>;
 
   return (
     <Layout width={100}>
-      {/* <SplitContainer
+      <SplitContainer
         left={
           <div
             className={serviceStyles.service_left_container}
@@ -111,7 +120,7 @@ const Blog_blogContainer = (props) => {
               Blog
             </Title>
             <div>
-              <p>{filterYear.blogs.description}</p>
+              {filterYear.blogs ? <p>{filterYear.blogs.description}</p> : null}
             </div>
             <div className={styles.blog_card_container}>
               {currentItems.map((item, i) => {
@@ -149,9 +158,12 @@ const Blog_blogContainer = (props) => {
             </div>
           </div>
         }
-        right={<FilterYear data={filterYear} curYear={dataYear} />}
-      /> */}
-      sdf
+        right={
+          filterYear.blogs ? (
+            <FilterYear data={filterYear} curYear={year} />
+          ) : null
+        }
+      />
     </Layout>
   );
 };

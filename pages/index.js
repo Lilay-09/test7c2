@@ -174,12 +174,3 @@ const HomeScreen = (props) => {
 };
 
 export default HomeScreen;
-// export const getServerSideProps = async () => {
-//   const res = await postData(`home-page`);
-//   const apiservice = await res;
-//   return {
-//     props: {
-//       homeapi: apiservice.data,
-//     },
-//   };
-// };

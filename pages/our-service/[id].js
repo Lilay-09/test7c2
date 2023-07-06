@@ -43,17 +43,21 @@ const OurService = (props) => {
           {
             method: "POST",
             body: JSON.stringify({ id: id }),
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
         );
         const json = await response.json();
-        setServiceLst(json.data);
+        setOurServices(json.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchServiceitems();
     fetchDataBanner();
-  }, []);
+  }, [id]);
+  console.log(ourServices);
   // const route = router.asPath.replace(router.asPath.slice(0, 13), "");
   return (
     <Layout>
@@ -61,7 +65,7 @@ const OurService = (props) => {
         <BannerLink img={services_lst.banner.image_url}>
           <Link href="/">Home</Link>
           <FontAwesomeIcon icon={faAngleRight} />
-          <Link href={`/our-service/${ourServices.id}`}>Our Service</Link>
+          {<Link href={`/our-service/${id}`}>Our Service</Link>}
           <FontAwesomeIcon icon={faAngleRight} />
           <Link href={`/our-service/${ourServices.id}`}>
             {ourServices.title}
@@ -71,29 +75,37 @@ const OurService = (props) => {
       <SplitContainer
         left={
           <div className={styles.services__container}>
-            <Title cap fs>
-              {ourServices.title}
-            </Title>
-            <div>
-              <p>{ourServices.video_text}</p>
-            </div>
-            <div className={styles.feed_video}>
-              {ourServices.video_url !== null && (
+            {ourServices[0] ? (
+              <Title cap fs>
+                {ourServices[0].title}
+              </Title>
+            ) : null}
+            {ourServices[0] ? (
+              <div>
+                <p>{ourServices[0].video_text}</p>
+              </div>
+            ) : null}
+            {ourServices[0] ? (
+              <div className={styles.feed_video}>
+                {console.log(ourServices[0].video_url)}
                 <iframe
                   width="100%"
                   height="100%"
-                  src={`${ourServices.video_url}`}
+                  src={`${ourServices[0]?.video_url}`}
                   allowFullScreen
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 ></iframe>
-              )}
-            </div>
-            <div>
-              <p>{ourServices.description}</p>
-            </div>
-            <div className={styles.feed_video}>
-              <ImageComp imageUrl={ourServices.image_url} />
-            </div>
+              </div>
+            ) : null}
+            {ourServices[0] ? (
+              <div>
+                <p>{ourServices[0].description}</p>
+              </div>
+            ) : null}
+            {ourServices[0] ? (
+              <div className={styles.feed_video}>
+                <ImageComp imageUrl={ourServices[0].image_url} />
+              </div>
+            ) : null}
           </div>
         }
         right={
@@ -124,16 +136,3 @@ const OurService = (props) => {
 };
 
 export default OurService;
-// export const getServerSideProps = async (context) => {
-//   const { params } = context;
-//   const { id } = params;
-//   const res = await postData(`our-services/front/details`, { id: id });
-//   const res_banner = await postData("our-services-page");
-//   const apiservice = await res;
-//   return {
-//     props: {
-//       ourServices: apiservice.data[0] ? apiservice.data[0] : apiservice.data,
-//       services_lst: res_banner.data,
-//     },
-//   };
-// };

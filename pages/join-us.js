@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../Sections/Layout";
 import HalfSplit from "../components/HalfSplit";
 import styles from "../styles/JoinUs.module.css";
@@ -15,25 +15,46 @@ import ImageComp from "../components/ImageComp";
 
 const JoinUs = (props) => {
   const router = useRouter();
-  const { joinUsApi } = props;
+  const [joinUsApi, setJoinUsApi] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await postData("join-us-page");
+        const json = await response;
+        setJoinUsApi(json.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  });
 
   return (
     <Layout join_us>
-      {/* <BannerLink img={joinUsApi.banner.image_url}>
-        <Link href="/">Home</Link>
-        <FontAwesomeIcon icon={faAngleRight} />
-        <Link href="/join-us">{ToCap(router.pathname)}</Link>
-      </BannerLink>
+      {joinUsApi.banner ? (
+        <BannerLink img={joinUsApi.banner.image_url}>
+          <Link href="/">Home</Link>
+          <FontAwesomeIcon icon={faAngleRight} />
+          <Link href="/join-us">{ToCap(router.pathname)}</Link>
+        </BannerLink>
+      ) : null}
+
       <HalfSplit
         title={"Membership Benifits"}
-        left={<Join_membership data={joinUsApi.join_us} />}
+        left={
+          joinUsApi.join_us ? (
+            <Join_membership data={joinUsApi.join_us} />
+          ) : null
+        }
         opposite
         right={
-          <div className={styles.membership__benifits_img}>
-            <ImageComp imageUrl={joinUsApi.join_img.image_url} />
-          </div>
+          joinUsApi.join_img ? (
+            <div className={styles.membership__benifits_img}>
+              <ImageComp imageUrl={joinUsApi.join_img.image_url} />
+            </div>
+          ) : null
         }
-      /> */}
+      />
     </Layout>
   );
 };

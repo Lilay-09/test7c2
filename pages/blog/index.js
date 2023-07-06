@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../Sections/Layout";
 import SplitContainer from "../../components/SplitContainer";
 import Blog_blogContainer from "../../components/Blog/Blog";
@@ -12,21 +12,41 @@ import { ToCap } from "../../utils/ToCapitalize";
 import { postData } from "../../utils/fetchData";
 
 const Blog = (props) => {
-  const { blogs_api } = props;
+  // const { blogs_api } = props;
+  const [blogs_api, setBlogApi] = useState([]);
   const router = useRouter();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await postData("blogs-page");
+        const json = await response;
+        setBlogApi(json.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <Layout title={router.pathname}>
-      {/* <BannerLink img={blogs_api.banner.image_url}>
-        <Link href="/">Home</Link>
-        <FontAwesomeIcon icon={faAngleRight} />
-        <Link href="/blog">{ToCap(router.pathname)}</Link>
-      </BannerLink>
-      <SplitContainer
-        left={<Blog_blogContainer data={blogs_api.blogs} />}
-        right={<FilterYear data={blogs_api} />}
-      /> */}
-      sdf
+      {blogs_api.banner ? (
+        <BannerLink img={blogs_api.banner.image_url}>
+          <Link href="/">Home</Link>
+          <FontAwesomeIcon icon={faAngleRight} />
+          <Link href="/blog">{ToCap(router.pathname)}</Link>
+        </BannerLink>
+      ) : null}
+      {
+        <SplitContainer
+          left={
+            blogs_api.blogs ? (
+              <Blog_blogContainer data={blogs_api.blogs} />
+            ) : null
+          }
+          right={blogs_api.filter_year ? <FilterYear data={blogs_api} /> : null}
+        />
+      }
     </Layout>
   );
 };

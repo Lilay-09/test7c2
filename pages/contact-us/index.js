@@ -12,31 +12,61 @@ import { ToCap } from "../../utils/ToCapitalize";
 import Image from "next/image";
 import { postData } from "../../utils/fetchData";
 import ImageComp from "../../components/ImageComp";
+import { useState } from "react";
+import { useEffect } from "react";
 const ContactUs = (props) => {
   const router = useRouter();
-  const { banner, contact_us } = props;
+  // const { banner, contact_us } = props;
+  const [banner, setBanner] = useState([]);
+  const [contact_us, setContactUs] = useState([]);
+  useEffect(() => {
+    const fetchDataBanner = async () => {
+      try {
+        const response = await postData("contact-us-banner/get");
+        const json = await response;
+        setBanner(json.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    const fetchContact = async () => {
+      try {
+        const response = await postData(`contact-us/list`);
+        const json = await response;
+        setContactUs(json.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchContact();
+    fetchDataBanner();
+  }, []);
+
   return (
     <Layout join_us title={router.pathname}>
-      sdfsdf
-      {/* <BannerLink img={banner.image_url}>
-        <Link href="/">Home</Link>
-        <FontAwesomeIcon icon={faAngleRight} />
-        <Link href="/contact-us">{ToCap(router.pathname)}</Link>
-      </BannerLink>
+      {banner.image_url ? (
+        <BannerLink img={banner.image_url}>
+          <Link href="/">Home</Link>
+          <FontAwesomeIcon icon={faAngleRight} />
+          <Link href="/contact-us">{ToCap(router.pathname)}</Link>
+        </BannerLink>
+      ) : null}
       <div className={styles.contact__us_map}>
         <div style={{ marginBottom: "3vw" }}>
           <Title cap>Contact us</Title>
         </div>
         <div className={styles.map_picc}>
-          <ImageComp imageUrl={contact_us.image_url} />
+          <ImageComp imageUrl={contact_us.map_img} />
         </div>
-        <Link
-          href={`${contact_us.map_url}`}
-          target="_blank"
-          className={styles.direction}
-        >
-          Get Direction
-        </Link>
+        {contact_us.map_url ? (
+          <Link
+            href={`${contact_us.map_url}`}
+            target="_blank"
+            className={styles.direction}
+          >
+            Get Direction
+          </Link>
+        ) : null}
       </div>
 
       <div className={styles.contact__via_any}>
@@ -121,7 +151,7 @@ const ContactUs = (props) => {
         <div className={styles.btn__send_msg}>
           <button type="submit">Send Message</button>
         </div>
-      </form> */}
+      </form>
     </Layout>
   );
 };
