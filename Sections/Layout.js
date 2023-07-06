@@ -23,8 +23,8 @@ const Layout = ({ children, title, width, gap, mbt, gap0, join_us }) => {
         }
       />
       <div>{children}</div>
-      {/* {!join_us && <JoinUs />}
-      <Footer /> */}
+      {!join_us && <JoinUs />}
+      <Footer />
     </div>
   );
 };
