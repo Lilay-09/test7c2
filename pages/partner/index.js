@@ -30,7 +30,7 @@ const Partner = (props) => {
   );
 };
 
-// export default Partner;
+export default Partner;
 // export const getServerSideProps = async () => {
 //   const res = await postData(`partner-page`);
 //   const apiservice = await res;

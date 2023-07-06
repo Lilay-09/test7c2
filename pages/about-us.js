@@ -19,10 +19,9 @@ import ImageComp from "../components/ImageComp";
 
 const AboutUs = (props) => {
   const router = useRouter();
-  const size = CheckResponse();
 
   const { about_us_api } = props;
-  const banner = about_us_api.banner;
+  // const banner = about_us_api.banner;
 
   return (
     <Layout title={router.pathname}>

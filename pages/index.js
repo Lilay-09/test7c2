@@ -26,11 +26,11 @@ import { postData } from "../utils/fetchData";
 import ImageComp from "../components/ImageComp";
 const HomeScreen = (props) => {
   const { homeapi } = props;
-  const why = homeapi.why_choosing_us;
-  const banner = homeapi.home_banner;
-  const company_description = homeapi.company_description;
+  // const why = homeapi.why_choosing_us;
+  // const banner = homeapi.home_banner;
+  // const company_description = homeapi.company_description;
 
-  const [watchVideo, setWatchedVideo] = useState(false);
+  // const [watchVideo, setWatchedVideo] = useState(false);
   return (
     <Layout>
       adsfasd
